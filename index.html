@@ -55,6 +55,11 @@ function draw(words) {
         .attr("transform", function(d) {
           return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
         })
+        .on("mouseover", function(d){
+    		d3.select(this).style("fill", function() {
+        return d3.rgb(d3.select(this).style("fill")).darker(1);
+    		});
+		})
         .text(function(d) { return d.text; });
 }
 </script>
