@@ -6,5 +6,12 @@
 <div id=d3_p>Hallo</div>
 
 <script>
+var words = [{"text":"This", "url":"http://google.com/"},
+             {"text":"is", "url":"http://bing.com/"},
+             {"text":"some", "url":"http://somewhere.com/"},
+             {"text":"random", "url":"http://random.org/"},
+             {"text":"text", "url":"http://text.com/"}]
+
+d3.select("#d3_p").values(words);
 d3.select("#d3_p").style("color", "blue");
 </script>
