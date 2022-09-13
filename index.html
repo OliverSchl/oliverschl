@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<h1>First html document</h1>
-<!-- Add a bit of text -->
-<p>This is my first sentence</p>
-<!-- Add a svg shape. Note that the 'target' class is attributed to the circle -->
-<svg> 
-  <circle class="target" style="fill: #69b3a2" stroke="black" cx=50 cy=50 r=40></circle>
-</svg>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script
+    type="text/javascript"
+    src="/js/lib/dummy.js"
+    
+  ></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+      <script type="text/javascript" src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+
+  <style id="compiled-css" type="text/css">
+    
+
+    /* EOS */
+  </style>
+
+  <script id="insert"></script>
+
+</head>
 <body>
-asd
-</body>
+    
 
-<!-- Load d3.js -->
-<script src="https://d3js.org/d3.v3.min.js"></script>
-<script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+    <script type="text/javascript">//<![CDATA[
 
 
-<script> 
 var fill = d3.scale.category20();
 var words = [{"text":"This", "url":"http://google.com/"},
              {"text":"is", "url":"http://bing.com/"},
@@ -27,6 +46,7 @@ var height = 300;
 for (var i = 0; i < words.length; i++) {
  words[i].size = 10 + Math.random() * 90;
 }
+
 d3.layout.cloud()
   .size([width, height])
   .words(words)
@@ -36,8 +56,9 @@ d3.layout.cloud()
   .fontSize(function(d) { return d.size;})
   .on("end", draw)
   .start();
+
 function draw(words) {
-    d3.select("d3div")
+    d3.select("body")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -69,5 +90,23 @@ function draw(words) {
     		});
 			});
 }
-  
-</script>
+
+
+  //]]></script>
+
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "8wofcr15"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
+
+
+</body>
+</html>
