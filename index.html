@@ -14,12 +14,21 @@
 <script>
 
 // List of words
-var myWords = [{word: "Running", size: "50"}, {word: "Surfing", size: "60"}, {word: "Climbing", size: "80"}, {word: "Kiting", size: "40"}, {word: "Sailing", size: "60"}, {word: "Snowboarding", size: "70"} ]
+var myWords = [{word: "Data Analysis", size: "80"}, 
+	       {word: "Data Visualization", size: "80"}, 
+	       {word: "Data Mining", size: "30"}, 
+	       {word: "Machine Learning", size: "40"}, 
+	       {word: "Dashboards", size: "50"}, 
+	       {word: "Managing and Maintaining Datasets", size: "50"}, 
+	       {word: "Exploratory Data Analysis", size: "70"} ]
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 10, bottom: 10, left: 10},
     width = 900 - margin.left - margin.right,
     height = 900 - margin.top - margin.bottom;
+	
+// set colors
+var fill = d3.scale.category20();
 
 // append the svg object to the body of the page
 var svg = d3.select("#my_dataviz").append("svg")
@@ -35,6 +44,7 @@ var layout = d3.layout.cloud()
   .size([width, height])
   .words(myWords.map(function(d) { return {text: d.word, size:d.size}; }))
   .padding(5)        //space between words
+  .font("Impact")
   .rotate(function() { return ~~(Math.random() * 2) * 90; })
   .fontSize(function(d) { return d.size; })      // font size of words
   .on("end", draw);
@@ -50,7 +60,7 @@ function draw(words) {
         .data(words)
       .enter().append("text")
         .style("font-size", function(d) { return d.size; })
-        .style("fill", "#69b3a2")
+        .style("fill", function(d, i) { return fill(i); })
         .attr("text-anchor", "middle")
         .style("font-family", "Impact")
         .attr("transform", function(d) {
